@@ -63,34 +63,34 @@ def getValidInput(message, validInputs):
 def main():
     print('Password Generator')
     
-    pwdSize = getValidInput('Enter the password length (between 8 and 20). Enter q to quit: ', list(range(8,21)))
+    pwdSize = getValidInput('Enter the password length (between 8 and 20). ([Q]uit): ', list(range(8,21)))
     if not pwdSize:
         return
 
-    case = getValidInput('Include uppercase, lowercase, or both? (1 to uppercase, 2 to lowercase, 3 to both). Enter 0 to quit: ', ['1', '2', '3'])
+    case = getValidInput('Include uppercase, lowercase, or both? ([U]ppercase/[L]owercase/[B]oth/[Q]uit): ', ['U', 'L', 'B'])
     if not case:
         return
 
-    uppercase = case == '1' or case == '3'
-    lowercase = case == '2' or case == '3'
+    uppercase = case == 'U' or case == 'B'
+    lowercase = case == 'L' or case == 'B'
 
-    numbersInput = getValidInput('Include numbers? (Y/N). Enter 0 to quit: ', ['Y', 'N'])
+    numbersInput = getValidInput('Include numbers? ([Y]es/[N]o/[Q]uit): ', ['Y', 'N'])
     if not numbersInput:
         return
     numbers = numbersInput == 'Y'
 
-    specialCharInput = getValidInput('Include special characters? (Y/N). Enter 0 to quit: ', ['Y', 'N'])
+    specialCharInput = getValidInput('Include special characters? ([Y]es/[N]o/[Q]uit): ', ['Y', 'N'])
     if not specialCharInput:
         return
     specialChar = specialCharInput == 'Y'
 
-    ambiguityInput = getValidInput('Allow character ambiguity? (Y/N). Enter 0 to quit: ', ['Y', 'N'])
+    ambiguityInput = getValidInput('Allow character ambiguity? ([Y]es/[N]o/[Q]uit): ', ['Y', 'N'])
     if not ambiguityInput:
         return
     ambiguity = ambiguityInput == 'Y'
 
     pwd = passwordGenerator(pwdSize, uppercase, lowercase, numbers, specialChar, ambiguity)
-    print('Password generated:', pwd)
+    print('Generated Password:', pwd)
 
 
 if __name__ == "__main__":
